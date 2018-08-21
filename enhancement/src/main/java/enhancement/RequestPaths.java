@@ -22,8 +22,8 @@ public class RequestPaths {
 		return URL_BASED_ON_PROVIDER.replace("{{provider}}", provider);
 	}
 
-	public static String getURL_BASED_ON_PARTICIPANTS(String participant) {
-		return URL_BASED_ON_PARTICIPANTS.replaceAll("{{participant}}", participant);
+	public static String getURL_BASED_ON_PARTICIPANTS(String pacticipant) {
+		return URL_BASED_ON_PARTICIPANTS.replace("{{pacticipant}}", pacticipant);
 	}
 
 	public static String getBASE_URL() {

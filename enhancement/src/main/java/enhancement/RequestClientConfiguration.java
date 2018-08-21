@@ -22,9 +22,6 @@ public class RequestClientConfiguration {
 	}
 
 	private static RestTemplate restTemplate() {
-		if (null == restTemplate) {
 			return new RestTemplate();
-		}
-		return restTemplate;
 	}
 }
