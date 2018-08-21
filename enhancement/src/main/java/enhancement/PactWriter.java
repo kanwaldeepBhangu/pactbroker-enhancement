@@ -1,7 +1,10 @@
 package enhancement;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
@@ -23,6 +26,11 @@ public class PactWriter {
 
 	private static void writePact(String filename, String response) throws IOException {
 		String targetFolder = System.getProperty("pact.broker.targetFolder");
+		if (!Files.isDirectory(Paths.get(targetFolder))) 
+		{
+			File file = new File(targetFolder);
+			file.mkdir();
+		}
 		fileName = targetFolder + "/" + filename;
 		FileWriter file = new FileWriter(fileName);
 		file.write(formatStringInJson(response));
