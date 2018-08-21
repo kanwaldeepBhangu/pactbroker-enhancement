@@ -1,0 +1,124 @@
+{
+    "provider": {
+        "name": "pact_provider"
+    },
+    "consumer": {
+        "name": "pact_consumer"
+    },
+    "interactions": [
+        {
+            "description": "Get call from pact service Consumer",
+            "request": {
+                "method": "GET",
+                "path": "/name1/",
+                "headers": {
+                    "xpath": "/TCRMService[1]/TxResponse[1]/ResponseObject[1]/TCRMPersonBObj[1]/TCRMAdminContEquivBObj[1]/AdminPartyId[1]/text()[1]\": \"123459\""
+                },
+                "query": {
+                    "id": [
+                        "1"
+                    ]
+                }
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/xml; charset=ISO-8859-1"
+                },
+                "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<pactModel>\r\n    <id>1</id>\r\n    <name>DummyName</name>\r\n</pactModel>"
+            }
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.18"
+        }
+    },
+    "createdAt": "2018-07-26T10:52:25+00:00",
+    "_links": {
+        "self": {
+            "title": "Pact",
+            "name": "Pact between pact_consumer (v0.0.1-SNAPSHOT) and pact_provider",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/version/0.0.1-SNAPSHOT"
+        },
+        "pb:consumer": {
+            "title": "Consumer",
+            "name": "pact_consumer",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_consumer"
+        },
+        "pb:consumer-version": {
+            "title": "Consumer version",
+            "name": "0.0.1-SNAPSHOT",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_consumer/versions/0.0.1-SNAPSHOT"
+        },
+        "pb:provider": {
+            "title": "Provider",
+            "name": "pact_provider",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_provider"
+        },
+        "pb:latest-pact-version": {
+            "title": "Latest version of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/latest"
+        },
+        "pb:all-pact-versions": {
+            "title": "All versions of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/versions"
+        },
+        "pb:latest-untagged-pact-version": {
+            "title": "Latest untagged version of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/latest-untagged"
+        },
+        "pb:latest-tagged-pact-version": {
+            "title": "Latest tagged version of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/latest/{tag}",
+            "templated": true
+        },
+        "pb:previous-distinct": {
+            "title": "Previous distinct version of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/version/0.0.1-SNAPSHOT/previous-distinct"
+        },
+        "pb:diff-previous-distinct": {
+            "title": "Diff with previous distinct version of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/version/0.0.1-SNAPSHOT/diff/previous-distinct"
+        },
+        "pb:diff": {
+            "title": "Diff with another specified version of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/pact-version/88d8098db614a47b04cb1745fd19e322849c5913/diff/pact-version/{pactVersion}",
+            "templated": true
+        },
+        "pb:pact-webhooks": {
+            "title": "Webhooks for the pact between pact_consumer and pact_provider",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/webhooks/provider/pact_provider/consumer/pact_consumer"
+        },
+        "pb:consumer-webhooks": {
+            "title": "Webhooks for all pacts with provider pact_provider",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/webhooks/consumer/pact_provider"
+        },
+        "pb:tag-prod-version": {
+            "title": "PUT to this resource to tag this consumer version as 'production'",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_consumer/versions/0.0.1-SNAPSHOT/tags/prod"
+        },
+        "pb:tag-version": {
+            "title": "PUT to this resource to tag this consumer version",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_consumer/versions/0.0.1-SNAPSHOT/tags/{tag}"
+        },
+        "pb:publish-verification-results": {
+            "title": "Publish verification results",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/pact-version/88d8098db614a47b04cb1745fd19e322849c5913/verification-results"
+        },
+        "pb:triggered-webhooks": {
+            "title": "Webhooks triggered by the publication of this pact",
+            "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/version/0.0.1-SNAPSHOT/triggered-webhooks"
+        },
+        "curies": [
+            {
+                "name": "pb",
+                "href": "https://kanwaldeepsingh.pact.dius.com.au/doc/{rel}?context=pact",
+                "templated": true
+            }
+        ]
+    }
+}

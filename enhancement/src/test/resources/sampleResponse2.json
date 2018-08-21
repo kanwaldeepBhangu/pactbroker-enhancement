@@ -1,0 +1,41 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/latest",
+      "title": "Latest pact versions for the provider pact_provider"
+    },
+    "pb:provider": {
+      "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_provider",
+      "name": "pact_provider"
+    },
+    "pb:pacts": [
+      {
+        "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/version/0.0.1-SNAPSHOT",
+        "title": "Pact between pact_consumer (v0.0.1-SNAPSHOT) and pact_provider",
+        "name": "pact_consumer"
+      },
+      {
+        "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer1/version/1.0.0",
+        "title": "Pact between pact_consumer1 (v1.0.0) and pact_provider",
+        "name": "pact_consumer1"
+      }
+    ],
+    "provider": {
+      "href": "https://kanwaldeepsingh.pact.dius.com.au/pacticipants/pact_provider",
+      "title": "pact_provider",
+      "name": "DEPRECATED - please use the pb:provider relation"
+    },
+    "pacts": [
+      {
+        "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer/version/0.0.1-SNAPSHOT",
+        "title": "DEPRECATED - please use the pb:pacts relation. Pact between pact_consumer (v0.0.1-SNAPSHOT) and pact_provider",
+        "name": "pact_consumer"
+      },
+      {
+        "href": "https://kanwaldeepsingh.pact.dius.com.au/pacts/provider/pact_provider/consumer/pact_consumer1/version/1.0.0",
+        "title": "DEPRECATED - please use the pb:pacts relation. Pact between pact_consumer1 (v1.0.0) and pact_provider",
+        "name": "pact_consumer1"
+      }
+    ]
+  }
+}
