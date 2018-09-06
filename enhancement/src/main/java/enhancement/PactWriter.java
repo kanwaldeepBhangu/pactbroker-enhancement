@@ -7,13 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
+import org.json.JSONObject;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-@Component
 public class PactWriter {
 
 	static String fileName;
@@ -26,8 +21,7 @@ public class PactWriter {
 
 	private static void writePact(String filename, String response) throws IOException {
 		String targetFolder = System.getProperty("pact.broker.targetFolder");
-		if (!Files.isDirectory(Paths.get(targetFolder))) 
-		{
+		if (!Files.isDirectory(Paths.get(targetFolder))) {
 			File file = new File(targetFolder);
 			file.mkdir();
 		}
@@ -35,13 +29,12 @@ public class PactWriter {
 		FileWriter file = new FileWriter(fileName);
 		file.write(formatStringInJson(response));
 		file.flush();
+		file.close();
 	}
 
-	private static String formatStringInJson(String response)
-			throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		Object json = mapper.readValue(response, Object.class);
-		return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+	private static String formatStringInJson(String response) {
+		JSONObject json = new JSONObject(response);
+		return json.toString(2);
 	}
 
 }
