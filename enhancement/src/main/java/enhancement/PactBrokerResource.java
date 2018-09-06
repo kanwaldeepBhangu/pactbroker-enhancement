@@ -6,10 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Component
 public class PactBrokerResource {
 
 	RestTemplate template;
@@ -41,8 +39,8 @@ public class PactBrokerResource {
 	}
 
 	private Map<String, String> getMap(List<String> links) {
-		Map map = new HashMap();
-		Iterator iterator = links.iterator();
+		Map<String, String> map = new HashMap<>();
+		Iterator<String> iterator = links.iterator();
 		while (iterator.hasNext()) {
 			String response = template.getForObject((String) iterator.next(), String.class);
 			map.put(PactResponseParser.getFilename(response), PactResponseParser.filterResponse(response));
