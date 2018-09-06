@@ -1,16 +1,12 @@
 package enhancement;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 
-@Component
 public class PactResponseParser {
 
 	public static String getFilename(String response) {
@@ -25,16 +21,15 @@ public class PactResponseParser {
 		JSONArray array = getJSONPactsArray(json);
 		return populateHrefsLinkFromJSONArray(array);
 	}
-	
-	public static String filterResponse(String response)
-	{
+
+	public static String filterResponse(String response) {
 		JSONObject json = new JSONObject(response);
-		StringBuilder builder=new StringBuilder();
+		StringBuilder builder = new StringBuilder();
 		builder.append("{");
-		builder.append("\"provider\":"+(JSONObject)json.get("provider")+",");
-		builder.append("\"consumer\":"+(JSONObject)json.get("consumer")+",");
-		builder.append("\"interactions\":"+(JSONArray)json.get("interactions")+",");
-		builder.append("\"metadata\":"+(JSONObject)json.get("metadata"));
+		builder.append("\"provider\":" + (JSONObject) json.get("provider") + ",");
+		builder.append("\"consumer\":" + (JSONObject) json.get("consumer") + ",");
+		builder.append("\"interactions\":" + (JSONArray) json.get("interactions") + ",");
+		builder.append("\"metadata\":" + (JSONObject) json.get("metadata"));
 		builder.append("}");
 		return builder.toString();
 	}
@@ -44,8 +39,8 @@ public class PactResponseParser {
 	}
 
 	private static List<String> populateHrefsLinkFromJSONArray(JSONArray jsonArray) {
-		List<String> hrefsList = new ArrayList();
-		Iterator iterator = jsonArray.iterator();
+		List<String> hrefsList = new ArrayList<>();
+		Iterator<Object> iterator = jsonArray.iterator();
 		while (iterator.hasNext()) {
 			JSONObject pact = (JSONObject) iterator.next();
 			hrefsList.add((String) pact.get("href"));
