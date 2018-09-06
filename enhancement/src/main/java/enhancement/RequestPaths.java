@@ -1,12 +1,6 @@
 package enhancement;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-@Component
 public class RequestPaths {
-
-	private static String BASE_URL;
 
 	private static String URL_BASED_ON_PROVIDER_AND_TAGS = "/pacts/provider/{{provider}}/latest/{{tag}}";
 
