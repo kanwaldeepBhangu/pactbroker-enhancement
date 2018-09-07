@@ -13,9 +13,14 @@ public class PactWriter {
 
 	static String fileName;
 
-	public static void writePactfileInTargetDiretory(Map<String, String> input) throws IOException {
-		for (Map.Entry<String, String> pair : input.entrySet()) {
-			writePact(pair.getKey(), pair.getValue());
+	public static void writePactfileInTargetDiretory(Map<String, String> input) {
+		try {
+			for (Map.Entry<String, String> pair : input.entrySet()) {
+				writePact(pair.getKey(), pair.getValue());
+			}
+		} catch (Throwable cause) {
+			cause.printStackTrace();
+			throw new PactBrokerUtilityException("Exception in Pact broker Utility with cause", cause);
 		}
 	}
 

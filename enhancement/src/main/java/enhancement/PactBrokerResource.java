@@ -16,14 +16,14 @@ public class PactBrokerResource {
 		template = RequestClientConfiguration.configureRequestClient();
 	}
 
-	public void downloadLatestPactsBasedOnProvider(String provider) throws IOException {
+	public void downloadLatestPactsBasedOnProvider(String provider) {
 		String response = template.getForObject(
 				RequestPaths.getBASE_URL() + RequestPaths.getURL_BASED_ON_PROVIDER(provider), String.class);
 		List<String> pactUrls = PactResponseParser.getPactLinksList(response);
 		PactWriter.writePactfileInTargetDiretory(getMap(pactUrls));
 	}
 
-	public void downloadLatestPactsBasedOnProviderAndTags(String provider, String tag) throws IOException {
+	public void downloadLatestPactsBasedOnProviderAndTags(String provider, String tag) {
 		String response = template.getForObject(
 				RequestPaths.getBASE_URL() + RequestPaths.getURL_BASED_ON_PROVIDER_AND_TAGS(provider, tag),
 				String.class);
@@ -31,7 +31,7 @@ public class PactBrokerResource {
 		PactWriter.writePactfileInTargetDiretory(getMap(pactUrls));
 	}
 
-	public void downloadLatestPactsBasedOnParticipants(String participants) throws IOException {
+	public void downloadLatestPactsBasedOnParticipants(String participants) {
 		String response = template.getForObject(
 				RequestPaths.getBASE_URL() + RequestPaths.getURL_BASED_ON_PARTICIPANTS(participants), String.class);
 		List<String> pactUrls = PactResponseParser.getPactLinksList(response);

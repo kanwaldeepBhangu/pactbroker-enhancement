@@ -19,7 +19,7 @@ public class PushTestPactVerifyResults {
 
 	public boolean pushResultsToBroker(String provider, String testResults) {
 		String response = template.getForObject(
-				RequestPaths.getBASE_URL() + RequestPaths.getURL_BASED_ON_PROVIDER("pact_provider"), String.class);
+				RequestPaths.getBASE_URL() + RequestPaths.getURL_BASED_ON_PROVIDER(provider), String.class);
 		List<String> pactUrls = PactResponseParser.getPactLinksList(response);
 		List<String> pacts = getPacts(pactUrls);
 		List<String> verifyResultsUrl = new ArrayList<>();
