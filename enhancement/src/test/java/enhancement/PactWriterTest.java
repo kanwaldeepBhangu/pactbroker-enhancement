@@ -14,17 +14,15 @@ public class PactWriterTest {
 	public static void setSystemProperties() {
 		System.setProperty("pact.broker.targetFolder", "pactFolder");
 	}
-	
+
 	@Test
 	public void testWritePactfileInTargetDiretory() {
-		Map<String,String> input=new HashMap();
-		input.put("test.json", "{\r\n" + 
-				"	\"DummyJson\": \"DummyValue\"\r\n" + 
-				"}");
-		
+		Map<String, String> input = new HashMap<>();
+		input.put("test.json", "{\r\n" + "	\"DummyJson\": \"DummyValue\"\r\n" + "}");
+
 		try {
 			PactWriter.writePactfileInTargetDiretory(input);
-		} catch (IOException e) {
+		} catch (PactBrokerUtilityException e) {
 			Assert.fail();
 		}
 	}

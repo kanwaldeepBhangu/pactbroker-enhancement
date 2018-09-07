@@ -3,8 +3,6 @@ package enhancement;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
 public class RequestClientConfigurationTest {
 
 	@BeforeClass
