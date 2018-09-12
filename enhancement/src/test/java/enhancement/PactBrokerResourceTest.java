@@ -26,7 +26,7 @@ public class PactBrokerResourceTest {
 		@Test
 	public void testEnvVar()
 	{
-		//assertEquals("mF97CxbFf5kUBQCWdLk9QMw16UQ8yl", System.getProperty(PactUtilityConstants.PACT_BROKER_USERNAME));
+		assertEquals("mF97CxbFf5kUBQCWdLk9QMw16UQ8yl", System.getProperty(PactUtilityConstants.PACT_BROKER_USERNAME));
 		assertEquals("82ALVC3qNxc2L0RLhtX34ZJ6lc5Prf", System.getProperty(PactUtilityConstants.PACT_BROKER_PASSWORD));
 		assertEquals("kanwaldeepsingh.pact.dius.com.au", System.getProperty(PactUtilityConstants.PACT_BROKER_HOST));
 		assertEquals("pactFolder", System.getProperty(PactUtilityConstants.PACT_BROKER_TARGET_FOLDER));
