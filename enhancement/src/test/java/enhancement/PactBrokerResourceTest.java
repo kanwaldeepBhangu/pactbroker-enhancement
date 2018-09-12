@@ -24,6 +24,10 @@ public class PactBrokerResourceTest {
 			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.password"));
 			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.host"));
 			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.targetFolder"));
+						System.setProperty("pact.broker.username", "mF97CxbFf5kUBQCWdLk9QMw16UQ8yl");
+			System.setProperty("pact.broker.password", "82ALVC3qNxc2L0RLhtX34ZJ6lc5Prf");
+			System.setProperty("pact.broker.host", "kanwaldeepsingh.pact.dius.com.au");
+			System.setProperty("pact.broker.targetFolder", "pactFolder");
 		}
 	}
 
