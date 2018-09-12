@@ -8,7 +8,7 @@ public class RequestPathsTest {
 
 	@BeforeClass
 	public static void setSystemProperties() {
-		System.setProperty("pact.broker.host", "kanwaldeepsingh.pact.dius.com.au");
+		System.setProperty(PactUtilityConstants.PACT_BROKER_HOST, "kanwaldeepsingh.pact.dius.com.au");
 	}
 
 	@Test

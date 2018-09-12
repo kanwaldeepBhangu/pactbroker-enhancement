@@ -12,7 +12,7 @@ public class PactWriterTest {
 
 	@BeforeClass
 	public static void setSystemProperties() {
-		System.setProperty("pact.broker.targetFolder", "pactFolder");
+		System.setProperty(PactUtilityConstants.PACT_BROKER_TARGET_FOLDER, "pactFolder");
 	}
 
 	@Test
