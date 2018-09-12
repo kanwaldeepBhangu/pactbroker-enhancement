@@ -11,10 +11,14 @@ public class PactBrokerResourceTest {
 
 	@BeforeClass
 	public static void setSystemProperties() {
+				if(System.getProperty("pact.broker.username")==null)
+		{
+			System.out.println("No Environment Variable Set");
 		System.setProperty("pact.broker.username", "xxx");
 		System.setProperty("pact.broker.password", "xxx");
 		System.setProperty("pact.broker.host", "kanwaldeepsingh.pact.dius.com.au");
 		System.setProperty("pact.broker.targetFolder", "pactFolder");
+				}
 	}
 
 	@Test
