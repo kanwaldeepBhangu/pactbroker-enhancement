@@ -19,6 +19,9 @@ public class PactBrokerResourceTest {
 		System.setProperty("pact.broker.host", "kanwaldeepsingh.pact.dius.com.au");
 		System.setProperty("pact.broker.targetFolder", "pactFolder");
 				}
+		else{
+			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.username"));
+		}
 	}
 
 	@Test
