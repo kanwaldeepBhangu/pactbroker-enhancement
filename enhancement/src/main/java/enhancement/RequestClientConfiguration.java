@@ -12,8 +12,8 @@ public class RequestClientConfiguration {
 	private static RestTemplate restTemplate;
 
 	public static RestTemplate configureRequestClient() {
-		userName = System.getProperty("pact.broker.username");
-		password = System.getProperty("pact.broker.password");
+		userName = System.getProperty(PactUtilityConstants.PACT_BROKER_USERNAME);
+		password = System.getProperty(PactUtilityConstants.PACT_BROKER_PASSWORD);
 		restTemplate = new RestTemplate();
 		restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(userName, password));
 		return restTemplate;

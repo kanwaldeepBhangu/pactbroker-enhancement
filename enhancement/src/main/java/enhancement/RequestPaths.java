@@ -21,7 +21,7 @@ public class RequestPaths {
 	}
 
 	public static String getBASE_URL() {
-		return "https://" + System.getProperty("pact.broker.host");
+		return "https://" + System.getProperty(PactUtilityConstants.PACT_BROKER_HOST);
 	}
 
 }

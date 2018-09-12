@@ -2,6 +2,8 @@ package enhancement;
 
 public class PactBrokerUtilityException extends RuntimeException {
 
+	private static final long serialVersionUID = -8613458933189426145L;
+
 	public PactBrokerUtilityException() {
 
 	}

@@ -11,9 +11,10 @@ public class PactResponseParser {
 
 	public static String getFilename(String response) {
 		JSONObject json = new JSONObject(response);
-		JSONObject provider_name = (JSONObject) json.get("provider");
-		JSONObject consumer_name = (JSONObject) json.get("consumer");
-		return consumer_name.getString("name") + "-" + provider_name.getString("name") + ".json";
+		JSONObject provider_name = getJSONObjectFromJsonByKey(PactUtilityConstants.PROVIDER, json);
+		JSONObject consumer_name = getJSONObjectFromJsonByKey(PactUtilityConstants.CONSUMER, json);
+		return consumer_name.getString(PactUtilityConstants.NAME) + "-"
+				+ provider_name.getString(PactUtilityConstants.NAME) + PactUtilityConstants.DOT_JSON;
 	}
 
 	public static List<String> getPactLinksList(String response) {
@@ -26,25 +27,36 @@ public class PactResponseParser {
 		JSONObject json = new JSONObject(response);
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
-		builder.append("\"provider\":" + (JSONObject) json.get("provider") + ",");
-		builder.append("\"consumer\":" + (JSONObject) json.get("consumer") + ",");
-		builder.append("\"interactions\":" + (JSONArray) json.get("interactions") + ",");
-		builder.append("\"metadata\":" + (JSONObject) json.get("metadata"));
+		builder.append("\"provider\":" + getJSONObjectFromJsonByKey(PactUtilityConstants.PROVIDER, json) + ",");
+		builder.append("\"consumer\":" + getJSONObjectFromJsonByKey(PactUtilityConstants.CONSUMER, json) + ",");
+		builder.append("\"interactions\":" + json.getJSONArray(PactUtilityConstants.INTERACTIONS) + ",");
+		builder.append("\"metadata\":" + getJSONObjectFromJsonByKey(PactUtilityConstants.METADATA, json));
 		builder.append("}");
 		return builder.toString();
 	}
 
 	private static JSONArray getJSONPactsArray(JSONObject json) {
-		return (JSONArray) json.getJSONObject("_links").get("pacts");
+		return json.getJSONObject(PactUtilityConstants.LINKS).getJSONArray(PactUtilityConstants.PACTS);
 	}
 
 	private static List<String> populateHrefsLinkFromJSONArray(JSONArray jsonArray) {
 		List<String> hrefsList = new ArrayList<>();
 		Iterator<Object> iterator = jsonArray.iterator();
 		while (iterator.hasNext()) {
-			JSONObject pact = (JSONObject) iterator.next();
-			hrefsList.add((String) pact.get("href"));
+			Object pact = iterator.next();
+			if (pact instanceof JSONObject) {
+				JSONObject json = (JSONObject) pact;
+				hrefsList.add(json.getString(PactUtilityConstants.HREF));
+			}
 		}
 		return hrefsList;
 	}
+
+	private static JSONObject getJSONObjectFromJsonByKey(String key, JSONObject json) {
+		if (json.get(key) instanceof JSONObject)
+			return json.getJSONObject(key);
+		else
+			throw new PactBrokerUtilityException("Get operation on json is not in not returning JSONObject");
+	}
+
 }

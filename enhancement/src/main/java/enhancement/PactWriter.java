@@ -25,16 +25,21 @@ public class PactWriter {
 	}
 
 	private static void writePact(String filename, String response) throws IOException {
-		String targetFolder = System.getProperty("pact.broker.targetFolder");
-		if (!Files.isDirectory(Paths.get(targetFolder))) {
-			File file = new File(targetFolder);
-			file.mkdir();
+		String targetFolder = System.getProperty(PactUtilityConstants.PACT_BROKER_TARGET_FOLDER);
+		FileWriter fileWriter = null;
+		try {
+			if (!Files.isDirectory(Paths.get(targetFolder))) {
+				File file = new File(targetFolder);
+				file.mkdir();
+			}
+			fileWriter = new FileWriter(targetFolder + "/" + filename);
+			fileWriter.write(formatStringInJson(response));
+		} catch (Exception cause) {
+			throw new PactBrokerUtilityException("Exception in writing file ", cause);
+		} finally {
+			fileWriter.flush();
+			fileWriter.close();
 		}
-		fileName = targetFolder + "/" + filename;
-		FileWriter file = new FileWriter(fileName);
-		file.write(formatStringInJson(response));
-		file.flush();
-		file.close();
 	}
 
 	private static String formatStringInJson(String response) {

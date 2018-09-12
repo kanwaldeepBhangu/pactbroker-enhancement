@@ -1,5 +1,7 @@
 package enhancement;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 public class PushTestPactVerifyResults {
@@ -30,7 +33,6 @@ public class PushTestPactVerifyResults {
 			postMessage(url, testResults);
 		});
 		return true;
-
 	}
 
 	private static List<String> getPacts(List<String> links) {
@@ -43,15 +45,23 @@ public class PushTestPactVerifyResults {
 
 	private static String getUrlForPublishReports(String pact) {
 		JSONObject json = new JSONObject(pact);
-		JSONObject links = (JSONObject) json.get("_links");
-		JSONObject testResult = (JSONObject) links.get("pb:publish-verification-results");
-		return (String) testResult.get("href");
+		JSONObject links = json.getJSONObject(PactUtilityConstants.LINKS);
+		JSONObject testResult = links.getJSONObject("pb:publish-verification-results");
+		return testResult.getString(PactUtilityConstants.HREF);
 	}
 
 	private static void postMessage(String url, String message) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<String> entity = new HttpEntity<String>(message, headers);
-		template.postForObject(url, entity, String.class);
+		try {
+			template.postForObject(new URI(url), entity, String.class);
+		} catch (RestClientException e) {
+			throw new PactBrokerUtilityException("Exception while posting result to broker", e);
+		} catch (URISyntaxException e) {
+			throw new PactBrokerUtilityException("Url to URI conversion failed", e);
+		} catch (Exception ex) {
+			throw new PactBrokerUtilityException("Excecption during publish result", ex);
+		}
 	}
 }
