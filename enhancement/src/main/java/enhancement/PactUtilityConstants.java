@@ -11,8 +11,8 @@ public class PactUtilityConstants {
 	public static final String PACTS = "pacts";
 	public static final String HREF = "href";
 	public static final String PUBLISH_VERIFICATION_RESULTS_URL = "pb:publish-verification-results";
-	public static final String PACT_BROKER_USERNAME = "pact.broker.username";
-	public static final String PACT_BROKER_PASSWORD = "pact.broker.password";
-	public static final String PACT_BROKER_HOST = "pact.broker.host";
-	public static final String PACT_BROKER_TARGET_FOLDER = "pact.broker.targetFolder";
+	public static final String PACT_BROKER_USERNAME = "PACT_BROKER_USERNAME";
+	public static final String PACT_BROKER_PASSWORD = "PACT_BROKER_PASSWORD";
+	public static final String PACT_BROKER_HOST = "PACT_BROKER_HOST";
+	public static final String PACT_BROKER_TARGET_FOLDER = "PACT_BROKER_TARGET_FOLDER";
 }
