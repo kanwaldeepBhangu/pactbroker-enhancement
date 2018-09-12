@@ -21,6 +21,9 @@ public class PactBrokerResourceTest {
 				}
 		else{
 			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.username"));
+			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.password"));
+			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.host"));
+			System.out.println(" Environment Variable Set-->"+System.getProperty("pact.broker.targetFolder"));
 		}
 	}
 
