@@ -8,7 +8,7 @@ public class RequestClientConfigurationTest {
 		@BeforeClass
 	public static void setSystemProperties() {
 		if (System.getProperty(PactUtilityConstants.PACT_BROKER_USERNAME) == null) {
-			System.setProperty(PactUtilityConstants.PACT_BROKER_USERNAME, "username");
+			System.setProperty(PactUtilityConstants.PACT_BROKER_USERNAME, "dummyUser");
 			System.setProperty(PactUtilityConstants.PACT_BROKER_PASSWORD, "password");
 		}
 	}
